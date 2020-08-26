@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 3002;
+
 const express = require('express');
 const router = require('./api/api-router.js');
 const cors = require('cors');
@@ -12,8 +14,6 @@ server.use('/', router);
 server.get('/', (req, res) => {
     res.send('Hello World');
 });
-
-const PORT = process.env.PORT || 3002;
 
 https.createServer({
   key: fs.readFileSync('./key.pem'),
