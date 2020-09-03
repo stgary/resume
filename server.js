@@ -10,7 +10,7 @@ server.use(express.json());
 server.use('/', router);
 
 server.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('***Server is up and running***');
 });
 
 server.listen(PORT);
