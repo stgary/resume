@@ -3,14 +3,6 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const { USER, PASS } = require('../config');
 
-const pdf = fs.createReadStream('../resources/sg.pdf');
-
-router.get('/pdf', function(req, res){
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'attachment; filename=sg.pdf');
-  pdf.pipe(res);
-});
-
 const transport = {
     host: 'smtp.gmail.com',
     port: 465,
@@ -61,6 +53,14 @@ router.post('/send', (req, res, next) => {
         })
       }
     });
+});
+
+var pdf = fs.createReadStream('./path-to-file-location/DeveloperResFINALReactNot.pdf');
+
+router.get('/pdf', function(req, res){
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename=sg.pdf');
+  pdf.pipe(res);
 });
 
   
