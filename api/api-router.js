@@ -3,6 +3,14 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const { USER, PASS } = require('../config');
 
+const pdf = fs.createReadStream('../resources/sg.pdf');
+
+router.get('/pdf', function(req, res){
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename=sg.pdf');
+  pdf.pipe(res);
+});
+
 const transport = {
     host: 'smtp.gmail.com',
     port: 465,
@@ -31,8 +39,8 @@ transporter.verify((error, success) => {
 router.post('/send', (req, res, next) => {
     const name = req.body.name;
     const email = req.body.email;
-    const message = req.body.message;
     const subject = req.body.subject;
+    const message = req.body.message;
     const content = `name: ${name} \nsubject: ${subject} \nemail: ${email} \nmessage: ${message} `
   
     const mail = {
@@ -52,8 +60,8 @@ router.post('/send', (req, res, next) => {
          status: 'success'
         })
       }
-    })
-  })
+    });
+});
 
   
 module.exports = router;
