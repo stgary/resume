@@ -54,14 +54,5 @@ router.post('/send', (req, res, next) => {
       }
     });
 });
-
-var pdf = fs.createReadStream('./path-to-file-location/DeveloperResFINALReactNot.pdf');
-
-router.get('/pdf', function(req, res){
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'attachment; filename=sg.pdf');
-  pdf.pipe(res);
-});
-
   
 module.exports = router;
