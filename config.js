@@ -1,4 +1,4 @@
 module.exports = {
-    USER: process.env.USER, 
-    PASS: process.env.PASS
+    USER_NAME: process.env.USER_NAME, 
+    PASSWORD: process.env.PASSWORD
 }

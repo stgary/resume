@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { USER, PASS } = require('../config');
+const { USER_NAME, PASSWORD } = require('../config');
 
 const transport = {
     host: 'smtp.gmail.com',
@@ -13,8 +13,8 @@ const transport = {
         rejectUnauthorized: false
     },
     auth: {
-      user: USER,
-      pass: PASS
+      user: USER_NAME,
+      pass: PASSWORD
     }
 }
 
