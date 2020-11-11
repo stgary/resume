@@ -1,2 +1,2 @@
-# resume-backend
-SMTP
+# Resume of Stephen Gary
+SMTP included
