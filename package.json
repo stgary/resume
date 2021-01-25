@@ -25,6 +25,7 @@
     "https": "^1.0.0",
     "knex": "^0.21.16",
     "nodemailer": "^6.4.11",
+    "pg": "^8.5.1",
     "sqlite3": "^5.0.1"
   },
   "devDependencies": {
