@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const { USER_NAME, PASSWORD } = require('../config');
+const db = require('./router-model.js');
 
 const transport = {
     host: 'smtp.gmail.com',
@@ -54,5 +55,17 @@ router.post('/send', (req, res, next) => {
       }
     });
 });
+
+router.put('/count', (req, res) => {
+  const view = req.body.views;
+  db.getViews()
+    .then(res => {
+      let curr = res++;
+      add(value) 
+        .then(res => 'Success')
+        .catch(err => 'error')
+  })
+  .catch(err => 'error getting count');
+})
   
 module.exports = router;
