@@ -14,4 +14,5 @@ module.exports = {
     CONNECTION: process.env.CONNECTION,
     DB_PORT: process.env.DB_PORT,
     DB_LABEL: process.env.DB_LABEL,
+    POSTGRESQL_URL: process.env.POSTGRESQL_URL,
 }
