@@ -35,11 +35,12 @@ module.exports = {
 
   production: {
     client: 'pg',
+    version: '8.5.1',
     connection: {
-      host: DB_HOST,
-      database: DATABASE,
-      user:     DB_USER,
-      password: DB_PASSWORD
+      host : DB_HOST,
+      user : DB_USER,
+      password : DB_PASSWORD,
+      database : DATABASE
     },
     pool: {
       min: 2,

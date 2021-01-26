@@ -5,10 +5,10 @@ module.exports = {
   getViews
 }
 
-function add(id, curr) {
-  return db('views').update({ count: curr }).where({ id: id });
+function add(newCount) {
+  return db('views').update({ count: newCount });
 }
 
-function getViews() {
-  return db('views');
+function getViews(id) {
+  return db('views').where({ id: id });
 }

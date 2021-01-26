@@ -50,23 +50,31 @@ router.post('/send', (req, res, next) => {
         })
       } else {
         res.json({
-         status: 'success'
+        status: 'success'
         })
       }
     });
 });
 
 router.put('/count', (req, res) => {
-  const view = req.body.views;
-  const id = 1;
-  db.getViews()
+  const { count } = req.body;
+  const { id } = req.body;
+
+  db.getViews(id)
     .then(res => {
-      let curr = res++;
-      add(id, curr) 
-        .then(res => 'Success')
-        .catch(err => 'error')
-  })
-  .catch(err => 'error getting count');
+      let newCount = count++;
+
+      add(id, newCount) 
+        .then(res => {
+          res.status(200).json({ message: 'Count incremented' })
+        })
+        .catch(err => {
+          res.status(500).json({ message: 'failed to increment' })
+        })
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'unable to get views'})
+  });
 })
   
 module.exports = router;
