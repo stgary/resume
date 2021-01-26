@@ -35,17 +35,21 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'Personal-Site-Stats',
+      user:     'postgre',
+      password: 'j233ancigp3po'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './data.migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    },
+    useNullAsDefault: true,
   }
 
 };

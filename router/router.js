@@ -58,8 +58,12 @@ router.post('/send', (req, res, next) => {
 
 router.get('/count', (req, res) => {
   db.find()
-    .then(dbRes => res.send(dbRes))
-    .catch(error => res.send(error.message))
-})
+    .then(dbRes => {
+      res.status(200).json({ COUNT: dbRes })
+    })
+    .catch(error => { 
+      res.status(404).json({ ERROR: 'YOU BROKE IT' })
+    })
+});
   
 module.exports = router;

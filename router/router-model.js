@@ -1,11 +1,18 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  find,
+  add,
+  visits
 }
 
-function find() {
+function add() {
   return db('visits')
     .where({ id: 1 })
     .increment('count', 1);
+}
+
+function visits() {
+  return db('visits')
+    .where({ id: 1})
+    .select('count');
 }
