@@ -1,14 +1,17 @@
-const { DB_PASSWORD, DB_USER, DATABASE, DB_HOST, DATABASE_URL, CONNECTION } = require('./config.js');
+const { DATABASE_URL } = require('./config.js');
 
 module.exports = {
   development: {
-    useNullAsDefault: true,
-    client: 'sqlite3',
-    connection: './data/DB.db3',
+    client: 'pg',
+    connection:  'C:\Program Files\PostgreSQL\13\data',
     migrations: {
       directory: './data/migrations',
     },
+    ssl: {
+      rejectUnauthorized: false
+    },
     seeds: { directory: './data/seeds' },
+    useNullAsDefault: true,
   },
 
   staging: {
@@ -22,27 +25,13 @@ module.exports = {
   },
 
   production: {
-    useNullAsDefault: true,
     client: 'pg',
     version: '8.5.1',
-    connection: {
-      host : DB_HOST,
-      port: 5432,
-      user : DB_USER,
-      database : DATABASE
-    },
-    ssl: {
-      rejectUnauthorized: false
-    },
-    searchPath: 'knex,public',
-    pool: {
-      min: 0,
-      max: 7
-    },
+    connection: DATABASE_URL + `?ssl=true`,
     migrations: {
       directory: './data/migrations',
     },
-    seeds: { directory: './data/seeds' },
+    useNullAsDefault: true
   }
 }
 

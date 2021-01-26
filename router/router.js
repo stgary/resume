@@ -74,27 +74,18 @@ router.post('/send', (req, res, next) => {
     });
 });
 
-router.put('/count', (req, res) => {
+router.get('/count', (req, res) => {
   db.find()
     .then(count => {
       if(count) {
-        const { view } = req.body;
-        let newCount = count + view;
-
-        return db.mod(newCount) 
-          .then(dbRes => {
-            res.send({ count: newCount })
-          })
-          .catch(error => {
-            res.status(500).json({ message: 'failed to increment' })
-          })
+        res.send(count)
       } else {
-        res.send('could not retrieve count')
+        res.status(404).json({ WHOOPS: 'NO COUNT'})
       }
     })
     .catch(error => {
       res.status(500).json({
-        message: 'error finding count'
+        WHOOPS: 'This should be working, try again'
       })
     })
 })

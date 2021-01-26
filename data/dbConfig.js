@@ -1,17 +1,7 @@
-const { DATABASE_URL } = require('../config.js');
+const knex = require("knex");
 
-const db = require('knex')({
-  client: 'pg',
-  connection: DATABASE_URL,
-  searchPath: 'knex,public',
-  pool: { min: 0, max: 7 },
-  migrations: { 
-    directory: './data/migrations' 
-  },
-  seeds: { 
-    directory: './data/seeds'
-  },
-  useNullAsDefault: true,
-});
+const config = require("../knexfile.js");
 
-module.exports = { db }
+const environment = process.env.DB_ENV || "development";
+
+module.exports = knex(config[environment]);
