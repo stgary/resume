@@ -1,14 +1,14 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  add,
+  insert,
   get
 }
 
-function add(newCount) {
+function insert(newCount) {
   return db('views')
-    .update({ count: newCount })
-    .where({ id });
+    .select('count')
+    .insert(newCount);
 }
 
 function get() {
