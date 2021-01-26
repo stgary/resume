@@ -1,5 +1,5 @@
 // Update with your config settings.
-const { DATABASE, DB_USER, DB_PASSWORD } = require('./config.js');
+const { DB_PASSWORD, DB_USER, DATABASE, DB_HOST } = require('./config.js');
 
 module.exports = {
 
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   staging: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       database: 'my_db',
       user:     'username',
@@ -34,19 +34,19 @@ module.exports = {
   },
 
   production: {
-    useNullAsDefault: true,
     client: 'pg',
     connection: {
+      host: DB_HOST,
       database: DATABASE,
       user:     DB_USER,
-      password: DB_PASSWORD,
+      password: DB_PASSWORD
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'knex_migrations'
     }
   }
 

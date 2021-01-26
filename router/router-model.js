@@ -5,8 +5,8 @@ module.exports = {
   getViews
 }
 
-function add(curr) {
-  return db('views').update({ count: curr });
+function add(id, curr) {
+  return db('views').update({ count: curr }).where({ id: id });
 }
 
 function getViews() {

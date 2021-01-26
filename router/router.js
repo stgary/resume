@@ -57,11 +57,12 @@ router.post('/send', (req, res, next) => {
 });
 
 router.put('/count', (req, res) => {
-  const view = req.views;
+  const view = req.body.views;
+  const id = 1;
   db.getViews()
     .then(res => {
       let curr = res++;
-      add(curr) 
+      add(id, curr) 
         .then(res => 'Success')
         .catch(err => 'error')
   })

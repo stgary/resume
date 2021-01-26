@@ -1,7 +1,8 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable("views", tbl => {
-    tbl.integer("count");
+    tbl.increment();
+    tbl.integer(count);
   })
 };
 
