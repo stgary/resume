@@ -63,8 +63,7 @@ router.put('/count', (req, res) => {
   db.get()
     .then(dbRes => {
       let newCount = dbRes++;
-      console.log('new count', newCount)
-      db.insert(newCount) 
+      db.update(newCount) 
         .then(dbRes => {
           res.status(200).json({ message: 'Count incremented' })
         })
