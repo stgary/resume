@@ -1,3 +1,5 @@
+// Update with your config settings.
+const { DATABASE, DB_USER, DB_PASSWORD } = require('./config')
 module.exports = {
 
   development: {
@@ -31,11 +33,11 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
-      database: process.env.DATABASE,
-      user:     process.env.DB_USER,
-      password: process.env.DB_PASSWORD
+      database: DATABASE,
+      user:     DB_USERNAME,
+      password: DB_PASSWORD
     },
     pool: {
       min: 2,
@@ -47,8 +49,7 @@ module.exports = {
     },
     seeds: {
       directory: './data/seeds',
-    },
-    useNullAsDefault: true,
+    }
   }
 
 };
