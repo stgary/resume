@@ -9,5 +9,5 @@ module.exports = {
     DATABASE: process.env.DATABASE || 'd8h0e5vp7m6grh',
     DB_HOST: process.env.DB_HOST || 'ec2-52-72-190-41.compute-1.amazonaws.com',
     ENVIRONMENT: process.env.ENVIRONMENT || 'production',
-    DATABASE_URL: process.env.DATABASE_URL || 'ec2-52-72-190-41.compute-1.amazonaws.com',
+    DATABASE_URL: process.env.DATABASE_URL || 'postgres://zncwpvwnuymcvm:9c5b35df36dcce9dd2029b6aac2dd6ba4e18050e81910a6a0e5d9ff695befba8@ec2-52-72-190-41.compute-1.amazonaws.com:5432/d8h0e5vp7m6grh',
 }

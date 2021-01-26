@@ -6,12 +6,12 @@ module.exports = {
 }
 
 function update(newCount) {
-  return db('views')
+  return db('visits')
     .update({ count: newCount });
 }
 
 function get() {
-  return db('views')
+  return db('visits')
     .select('count')
     .first();
 }

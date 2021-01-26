@@ -1,8 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { USER_NAME, SMTP_PASSWORD } = require('../config');
+const { USER_NAME, SMTP_PASSWORD, DATABASE_URL } = require('../config');
 const db = require('./router-model.js');
+const { Client } = require('pg');
+
+// const client = new Client({
+//   connectionString: DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
+// client.connect();
+
+// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//   // if (err) throw err;
+//   // for (let row of res.rows) {
+//   //   console.log(JSON.stringify(row));
+//   // }
+//   client.end();
+// });
 
 const transport = {
     host: 'smtp.gmail.com',
