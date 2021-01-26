@@ -19,20 +19,14 @@
   },
   "homepage": "https://github.com/stgary/resume-backend#readme",
   "dependencies": {
-    "apt": "0.0.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
     "https": "^1.0.0",
     "knex": "^0.21.16",
     "nodemailer": "^6.4.11",
     "pg": "^8.5.1",
-    "pkg": "^4.4.9",
-    "psql": "0.0.1",
-    "sqlite3": "^5.0.1",
-    "sudo": "^1.0.3",
-    "tsu": "0.0.5"
+    "sqlite3": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

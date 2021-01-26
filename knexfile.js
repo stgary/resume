@@ -3,12 +3,9 @@ const { DATABASE_URL } = require('./config.js');
 module.exports = {
   development: {
     client: 'pg',
-    connection:  'C:\Program Files\PostgreSQL\13\data',
+    connection:  'localhost',
     migrations: {
       directory: './data/migrations',
-    },
-    ssl: {
-      rejectUnauthorized: false
     },
     seeds: { directory: './data/seeds' },
     useNullAsDefault: true,
