@@ -5,5 +5,10 @@ module.exports = {
     client: CLIENT,
     connection: { user: DB_USER, database: DATABASE }
   },
-  production: { client: CLIENT, connection: CONNECTION }
+  production: { 
+    client: CLIENT, 
+    connection: CONNECTION ?ssl = 
+  },
+  useNullAsDefault: true,
+
 };
