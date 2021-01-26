@@ -1,55 +1,9 @@
-// Update with your config settings.
+const { DB_USER, DATABASE_URL, DATABASE, CLIENT, CONNECTION } = require('./config.js');
 
 module.exports = {
-
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './data/resumeDB.db3'
-    },
-    migrations: {
-      directory: './data/migrations'
-    },
-    seeds: {
-      directory: './data/seeds'
-    },
-    useNullAsDefault: true,
+    client: CLIENT,
+    connection: { user: DB_USER, database: DATABASE }
   },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'Personal-Site-Stats',
-      user:     'postgre',
-      password: 'j233ancigp3po'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: './data.migrations',
-    },
-    seeds: {
-      directory: './data/seeds',
-    },
-    useNullAsDefault: true,
-  }
-
+  production: { client: CLIENT, connection: CONNECTION }
 };

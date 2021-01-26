@@ -10,4 +10,6 @@ module.exports = {
     DB_HOST: process.env.DB_HOST,
     ENVIRONMENT: process.env.ENVIRONMENT,
     DATABASE_URL: process.env.DATABASE_URL,
+    CLIENT: process.env.CLIENT,
+    CONNECTION: process.env.CONNECTION,
 }
