@@ -1,26 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { USER_NAME, SMTP_PASSWORD, DATABASE_URL } = require('../config');
+const { USER_NAME, SMTP_PASSWORD } = require('../config');
 const db = require('./router-model.js');
-const { Client } = require('pg');
-
-// const client = new Client({
-//   connectionString: DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
-
-// client.connect();
-
-// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-//   // if (err) throw err;
-//   // for (let row of res.rows) {
-//   //   console.log(JSON.stringify(row));
-//   // }
-//   client.end();
-// });
 
 const transport = {
     host: 'smtp.gmail.com',
@@ -76,18 +58,8 @@ router.post('/send', (req, res, next) => {
 
 router.get('/count', (req, res) => {
   db.find()
-    .then(count => {
-      if(count) {
-        res.send(count)
-      } else {
-        res.status(404).json({ WHOOPS: 'NO COUNT'})
-      }
-    })
-    .catch(error => {
-      res.status(500).json({
-        WHOOPS: 'This should be working, try again'
-      })
-    })
+    .then(dbRes => res.send('Success'))
+    .catch(error => res.send('Failure'))
 })
   
 module.exports = router;
