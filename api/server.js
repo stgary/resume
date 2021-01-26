@@ -7,7 +7,7 @@ const { DB_PASSWORD, DB_USER, DATABASE, DB_HOST, DATABASE_URL } = require('../co
 const app = express();
 
 app.use(cors({
-    Origin: '*',
+    Origin: 'http://localhost:3000',
 }))
 app.use(express.json());
 app.use('/', router);
