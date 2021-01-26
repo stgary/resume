@@ -1,5 +1,23 @@
 // Update with your config settings.
-const { DB_PASSWORD, DB_USER, DATABASE, DB_HOST } = require('./config.js');
+const { DB_PASSWORD, DB_USER, DATABASE, DB_HOST, DATABASE_URL } = require('./config.js');
+const { client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
 
 module.exports = {
 
