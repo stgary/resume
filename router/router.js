@@ -56,36 +56,25 @@ router.post('/send', (req, res, next) => {
     });
 });
 
-router.get('/count', (reg, res) => {
-    db.get()
-      .then(dbRes => {
-        res.send(dbRes);
-      })
-      .catch(error => {
-        res.send('fuck');
-      })
+router.put('/count', (req, res) => {
+  const { count } = req.body;
+  const { id } = req.body;
+
+  db.get()
+    .then(dbRes => {
+      let newCount = dbRes++;
+      
+      add(id, newCount) 
+        .then(dbRes => {
+          res.status(200).json({ message: 'Count incremented' })
+        })
+        .catch(error => {
+          res.status(500).json({ message: 'failed to increment' })
+        })
+    })
+    .catch(error => {
+      res.status(500).json({ message: 'unable to get views'})
+  });
 })
-
-// router.put('/count', (req, res) => {
-//   const { count } = req.body;
-//   const { id } = req.body;
-
-//   db.get(id)
-//     .then(dbRes => {
-//       console.log(dbRes);
-//       let newCount = count++;
-
-//       add(id, newCount) 
-//         .then(res => {
-//           res.status(200).json({ message: 'Count incremented' })
-//         })
-//         .catch(err => {
-//           res.status(500).json({ message: 'failed to increment' })
-//         })
-//     })
-//     .catch(err => {
-//       res.status(500).json({ message: 'unable to get views'})
-//   });
-// })
   
 module.exports = router;
