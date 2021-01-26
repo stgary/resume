@@ -6,9 +6,13 @@ module.exports = {
 }
 
 function mod(newCount) {
-  return db('visits').select('count').update({ count: newCount });
+  return db('visits')
+    .where({ id: 1 })
+    .update({ count: newCount });
 }
 
 function find() {
-  return db('visits').select('count').first();
+  return db('visits')
+    .where({ id: 1 })
+    .select('count');
 }
