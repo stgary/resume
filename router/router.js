@@ -57,7 +57,7 @@ router.post('/send', (req, res, next) => {
 });
 
 router.get('/count', (req, res) => {
-  db.find()
+  db.counter()
     .then(dbRes => {
       res.status(200).json({ COUNT: dbRes })
     })

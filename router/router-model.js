@@ -1,17 +1,17 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  add,
-  visits
+  counter,
+  total
 }
 
-function add() {
+function counter() {
   return db('visits')
     .where({ id: 1 })
     .increment('count', 1);
 }
 
-function visits() {
+function total() {
   return db('visits')
     .where({ id: 1})
     .select('count');
