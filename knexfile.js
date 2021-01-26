@@ -18,7 +18,7 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: 'my_db',
       user:     'username',
@@ -35,7 +35,7 @@ module.exports = {
 
   production: {
     useNullAsDefault: true,
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: DATABASE,
       user:     DB_USER,
@@ -47,10 +47,6 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: './data/migrations'
-    },
-    seeds: {
-      directory: './data/seeds'
     }
   }
 

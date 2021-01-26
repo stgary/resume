@@ -5,12 +5,10 @@ module.exports = {
   getViews
 }
 
-function add(value) {
-  return( 
-    db('views').update({ count: value })
-  );
+function add(curr) {
+  return db('views').update({ count: curr });
 }
 
 function getViews() {
-  return db('views').select(count);
+  return db('views');
 }
