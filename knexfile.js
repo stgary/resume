@@ -33,7 +33,8 @@ module.exports = {
     }
   },
 
-  development: {
+  production: {
+    useNullAsDefault: true,
     client: 'postgresql',
     connection: {
       database: DATABASE,

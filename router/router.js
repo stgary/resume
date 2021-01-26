@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { USER_NAME, PASSWORD } = require('../config');
+const { USER_NAME, SMTP_PASSWORD } = require('../config');
 const db = require('./router-model.js');
 
 const transport = {
