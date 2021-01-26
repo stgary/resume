@@ -10,5 +10,5 @@ function add(newCount) {
 }
 
 function get() {
-  return db('views').select('count');
+  return db('views');
 }
