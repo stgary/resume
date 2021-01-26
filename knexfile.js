@@ -1,4 +1,5 @@
 // Update with your config settings.
+const { DATABASE, DB_USER, DB_PASSWORD } = require('./config.js');
 
 module.exports = {
 
@@ -32,12 +33,12 @@ module.exports = {
     }
   },
 
-  production: {
+  development: {
     client: 'postgresql',
     connection: {
-      database: 'resumeDB',
-      user:     'sgary',
-      password: 'G&&s69xx'
+      database: DATABASE,
+      user:     DB_USER,
+      password: DB_PASSWORD,
     },
     pool: {
       min: 2,
