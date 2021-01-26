@@ -58,8 +58,8 @@ router.post('/send', (req, res, next) => {
 
 router.get('/count', (req, res) => {
   db.find()
-    .then(dbRes => res.send('Success'))
-    .catch(error => res.send('Failure'))
+    .then(dbRes => res.send(dbRes))
+    .catch(error => res.send(error.message))
 })
   
 module.exports = router;
