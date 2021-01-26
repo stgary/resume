@@ -15,7 +15,7 @@ const transport = {
     },
     auth: {
       user: USER_NAME,
-      pass: PASSWORD
+      pass: SMTP_PASSWORD
     }
 }
 
