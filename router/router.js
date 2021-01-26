@@ -74,21 +74,29 @@ router.post('/send', (req, res, next) => {
     });
 });
 
-router.get('/count', (req, res) => {
-  db.get()
-    .then(dbRes => {
-      let newCount = dbRes++;
-      db.update(newCount) 
-        .then(dbRes => {
-          res.status(200).json({ message: 'Count incremented' })
-        })
-        .catch(error => {
-          res.status(500).json({ message: 'failed to increment' })
-        })
+router.put('/count', (req, res) => {
+  db.find()
+    .then(count => {
+      if(count) {
+        const { view } = req.body;
+        let newCount = count + view;
+
+        return db.mod(newCount) 
+          .then(dbRes => {
+            res.send({ count: newCount })
+          })
+          .catch(error => {
+            res.status(500).json({ message: 'failed to increment' })
+          })
+      } else {
+        res.send('could not retrieve count')
+      }
     })
     .catch(error => {
-      res.status(500).json({ message: 'unable to get views'})
-  });
+      res.status(500).json({
+        message: 'error finding count'
+      })
+    })
 })
   
 module.exports = router;

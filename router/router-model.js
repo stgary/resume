@@ -1,17 +1,14 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  update,
-  get
+  find,
+  mod
 }
 
-function update(newCount) {
-  return db('visits')
-    .update({ count: newCount });
+function mod(newCount) {
+  return db('visits').select('count').update({ count: newCount });
 }
 
-function get() {
-  return db('visits')
-    .select('count')
-    .first();
+function find() {
+  return db('visits').select('count').first();
 }
