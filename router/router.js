@@ -56,10 +56,7 @@ router.post('/send', (req, res, next) => {
     });
 });
 
-router.put('/count', (req, res) => {
-  const { count } = req.body;
-  const { id } = req.body;
-
+router.get('/count', (req, res) => {
   db.get()
     .then(dbRes => {
       let newCount = dbRes++;
