@@ -1,14 +1,34 @@
-const { DATABASE, DB_PASSWORD, DB_USER, DB_HOST, CLIENT, POSTGRESQL_URL } = require('../config.js');
+// const knex = require("knex");
 
-const knex = require('knex')({
-  useNullAsDefaults: true,
-  client: CLIENT,
-  version: '8.5.1',
-  connection: POSTGRESQL_URL,
-  ssl: true,
-  migrations: { directory: './data/migrations' },
-  seeds: { directory: './data/seeds' },
-  pool: { min: 0, max: 7 },
-});
+// const config = require("../knexfile.js");
 
-module.exports = knex;
+// const environment = process.env.DB_ENV || "development";
+
+// module.exports = knex(config[environment]);
+
+const { HEROKU_POSTGRESQL_WHITE_URL, DB_USER, DATABASE } = require('../config.js');
+
+const knex = require('knex');
+
+const config = { 
+  
+  useNullAsDefault: true,
+  client: 'postgres',  
+  connection: HEROKU_POSTGRESQL_WHITE_URL || { user: DB_USER, database: DATABASE }, 
+  searchPath: ['knex', 'public'],
+  pool: {
+    min: 0,
+    max: 7,
+  },
+  migrations: {
+    directory: './migrations',
+  },
+  seeds: {
+    directory: './seeds',
+  },
+  ssl: {
+    rejectUnauthorized: false,
+  }
+}
+
+module.exports = knex(config);
