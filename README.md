@@ -1,2 +1,6 @@
-# Resume of Stephen Gary
-SMTP included
+# Stephen Gary
+- SMTP 
+- Alternative/Additional way of contacting me.
+- JavaScript, Node, Heroku
+
+

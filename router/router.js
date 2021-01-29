@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { USER_NAME, SMTP_PASSWORD } = require('../config');
-const db = require('./router-model.js');
 
 const transport = {
     host: 'smtp.gmail.com',
@@ -54,16 +52,6 @@ router.post('/send', (req, res, next) => {
         })
       }
     });
-});
-
-router.get('/count', (req, res) => {
-  db.counter()
-    .then(dbRes => {
-      res.status(200).json({ COUNT: dbRes })
-    })
-    .catch(error => { 
-      res.status(404).json({ ERROR: 'YOU BROKE IT' })
-    })
 });
   
 module.exports = router;
